@@ -12,8 +12,8 @@ export function Footer() {
         <Link href="/press" className={classes.link}>
           Press
         </Link>
-        <Link href="/about" className={classes.link}>
-          About
+        <Link href="/info" className={classes.link}>
+          Info
         </Link>
       </Group>
     </footer>

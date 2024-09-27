@@ -1,3 +1,5 @@
+import { Header } from "@components/Header";
+
 export default function Press() {
-  return <div>Press</div>;
+  return <Header>Press</Header>;
 }

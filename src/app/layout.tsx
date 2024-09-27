@@ -17,10 +17,10 @@ const RootLayout: FC<Component> = ({ children }) => {
     <html lang="en">
       <body>
         <ThemeProvider>
-          <MainLayout>
-            <Content>{children}</Content>
-            <Footer />
-          </MainLayout>
+            <MainLayout>
+              <Content>{children}</Content>
+              <Footer />
+            </MainLayout>
         </ThemeProvider>
       </body>
     </html>
