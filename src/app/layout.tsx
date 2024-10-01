@@ -6,6 +6,7 @@ import { MainLayout } from "@components/MainLayout";
 import "@mantine/core/styles.css";
 import "./global.css";
 import { Content } from "@components/Content";
+import Transition from "@shared/ui/Transition";
 
 export const metadata = {
   title: "Filatique",
@@ -17,10 +18,12 @@ const RootLayout: FC<Component> = ({ children }) => {
     <html lang="en">
       <body>
         <ThemeProvider>
-            <MainLayout>
+          <MainLayout>
+            <Transition>
               <Content>{children}</Content>
-              <Footer />
-            </MainLayout>
+            </Transition>
+            <Footer />
+          </MainLayout>
         </ThemeProvider>
       </body>
     </html>
