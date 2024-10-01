@@ -1,11 +1,15 @@
-import { Group, Box } from "@mantine/core";
+import { Group } from "@mantine/core";
 import Link from "next/link";
 import classes from "./Footer.module.css";
+import { IconPlus } from "@tabler/icons-react";
 
 export function Footer() {
   return (
     <footer className={classes.footer}>
-      <Group align="center" justify="space-evenly" h="100%" gap={0}>
+      <Group align="center" justify="space-around" h="100%" gap={0}>
+        <Link href="/" className={classes.link}>
+          <IconPlus size={36} color="white" />
+        </Link>
         <Link href="/listen" className={classes.link}>
           Listen
         </Link>

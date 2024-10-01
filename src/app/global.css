@@ -25,6 +25,13 @@ body {
     box-sizing: border-box;
 }
 
+a {
+    color: inherit;
+    /* blue colors for links too */
+    text-decoration: inherit;
+    /* no underline */
+}
+
 img {
     max-width: 100%;
     display: block;
