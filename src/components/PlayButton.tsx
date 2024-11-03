@@ -42,38 +42,40 @@ export const PlayButton = () => {
   };
 
   return (
-    <div className="play-button-parent">
-      <motion.div
-        onClick={() => plusHandler()}
-        animate={getMode(plusOn, playerOn)}
-        variants={plusVariants}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 20,
-        }}
-        className="play-button-plus"
-      >
-        <IconPlus
-          size={36}
-          color="white"
-          style={{ transformOrigin: "12 12" }}
-        />
-      </motion.div>
-      <motion.div
-        onClick={() => playerHandler()}
-        initial={{ rotate: -90, opacity: 0 }}
-        animate={plusOn ? "visible" : "hidden"}
-        variants={playVariants}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 20,
-        }}
-        className="play-button-text"
-      >
-        Play
-      </motion.div>
+    <div>
+      <div className="play-button-parent">
+        <motion.div
+          onClick={() => plusHandler()}
+          animate={getMode(plusOn, playerOn)}
+          variants={plusVariants}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
+          className="play-button-plus"
+        >
+          <IconPlus
+            size={36}
+            color="white"
+            style={{ transformOrigin: "12 12" }}
+          />
+        </motion.div>
+        <motion.div
+          onClick={() => playerHandler()}
+          initial={{ rotate: -90, opacity: 0 }}
+          animate={plusOn ? "visible" : "hidden"}
+          variants={playVariants}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
+          className="play-button-text"
+        >
+          Play
+        </motion.div>
+      </div>
     </div>
   );
 };
