@@ -1,5 +1,6 @@
 import { Header } from "@components/Header";
 import { Title } from "@components/Title";
+import { MainPageBackground } from "@shared/ui/MainPageBackground";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <Header>
         <Title>filatique</Title>
       </Header>
+      <MainPageBackground />
     </>
   );
 }
