@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { Mesh } from "three";
 import { ContactShadows, Environment, Float, Text, Html, Lightformer, MeshTransmissionMaterial } from "@react-three/drei";
 import { Canvas, MeshProps, useFrame } from "@react-three/fiber";
-import { Bloom, EffectComposer, N8AO, TiltShift2 } from "@react-three/postprocessing";
+import { Bloom, EffectComposer, TiltShift2 } from "@react-three/postprocessing";
 import { easing } from 'maath';
 import { TextProps } from "@mantine/core";
 
@@ -13,11 +13,11 @@ import { TextProps } from "@mantine/core";
 export const MainPageBackground = () => {
 
     return (
-        <div style={{ display: "flex", justifyContent: "center", justifyItems: 'center', alignItems: 'center', height: '100%' }}>
+        <div style={{ display: "flex", justifyContent: "center", justifyItems: 'center', alignItems: 'center', height: '100vh', width: '100vw', position:'absolute', overflow: "hidden" }}>
 
-            <Canvas eventPrefix="client" shadows camera={{ position: [0, 0, 20], fov: 50 }}>
-                {/* <color attach="background" args={["#e0e0e0"]} /> */}
-                {/* <spotLight position={[20, 20, 10]} penumbra={1} castShadow angle={0.2} />
+            <Canvas eventPrefix="client" shadows camera={{ position: [0, 0, 20], fov: 90 }}>
+                <color attach="background" args={["#000000"]} />
+                <spotLight position={[20, 20, 10]} penumbra={1} castShadow angle={0.2} />
                 <Status />
                 <Float floatIntensity={2}>
                     <Torus />
@@ -27,11 +27,11 @@ export const MainPageBackground = () => {
                     <Lightformer intensity={8} position={[10, 5, 0]} scale={[10, 50, 1]} onUpdate={(self) => self.lookAt(0, 0, 0)} />
                 </Environment>
                 <EffectComposer enableNormalPass={false}>
-                    <N8AO aoRadius={1} intensity={2} />
-                    <Bloom mipmapBlur luminanceThreshold={0.8} intensity={2} levels={8} />
+                    {/* <N8AO aoRadius={1} intensity={2} /> */}
+                    <Bloom mipmapBlur luminanceThreshold={2} intensity={2} levels={8} />
                     <TiltShift2 blur={0.2} />
-                </EffectComposer> */}
-                {/* <Rig /> */}
+                </EffectComposer>
+                <Rig />
             </Canvas>
         </div>
     )
@@ -65,7 +65,7 @@ const Torus = (props: MeshProps) => {
 
 const Status = (props: TextProps) => {
     return (
-        <Text fontSize={14} letterSpacing={-0.025} color="black" position={[0, 0, -10]} {...props}>
+        <Text fontSize={14} letterSpacing={-0.025} color="white" position={[0, 0, -10]} {...props}>
             Filatique
             <Html style={{ color: "transparent", fontSize: "33.5em" }} transform>
                 Filatique

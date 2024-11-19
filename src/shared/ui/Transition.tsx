@@ -11,6 +11,8 @@ export default function Transition({
 }) {
   const pathname = usePathname();
 
+  console.log('Transition render');
+
   return (
     <AnimatePresence mode="wait">
       <motion.div key={pathname} className="transition-div">

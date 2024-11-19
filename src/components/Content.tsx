@@ -4,7 +4,7 @@ import { FC } from "react";
 
 export const Content: FC<Component> = ({ children }) => {
   return (
-    <Container w="100%" h="100%" p={0}>
+    <Container fluid h="100%" p={0} style={{position: 'relative'}}>
       {children}
     </Container>
   );

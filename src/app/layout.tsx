@@ -14,6 +14,9 @@ export const metadata = {
 };
 
 const RootLayout: FC<Component> = ({ children }) => {
+
+  console.log('root layout render');
+
   return (
     <html lang="en">
       <body>
