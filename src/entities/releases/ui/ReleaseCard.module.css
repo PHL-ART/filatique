@@ -1,0 +1,169 @@
+.releaseCard {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: transparent;
+    border: none;
+}
+
+.releaseCard:hover {
+    transform: scale(0.98);
+}
+
+.releaseCard:active {
+    transform: scale(0.95);
+}
+
+.imageContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.coverImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.titleContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.releaseTitle {
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Стили для модального окна */
+.modalOverlay {
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modalContent {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    max-width: 900px;
+    width: 100%;
+}
+
+.modalBody {
+    padding: 0;
+}
+
+.modalContainer {
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 2rem;
+}
+
+.modalInfoColumn {
+    flex: 1;
+    max-width: 60%;
+}
+
+.modalLinksColumn {
+    flex: 1;
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modalTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.modalDescription {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.modalDate {
+    margin-bottom: 2rem;
+    opacity: 0.7;
+}
+
+.listenLinksContainer {
+    width: 100%;
+}
+
+.listenLinksTitle {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.listenLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.listenLink {
+    text-decoration: none;
+    color: white;
+    transition: transform 0.2s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.listenLink:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.serviceIconContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.serviceIcon {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.serviceName {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .modalContainer {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .modalInfoColumn, .modalLinksColumn {
+        max-width: 100%;
+    }
+    
+    .serviceIconContainer {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5433,
+            "driver": "PostgreSQL",
+            "name": "filatique-db",
+            "group": "filatique",
+            "database": "postgres",
+            "username": "filatique",
+            "password": "dq8bsOKr2zhM50e3"
+        }
+    ]
+}

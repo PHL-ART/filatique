@@ -1,12 +1,14 @@
 import { FC } from "react";
-import { ThemeProvider } from "@components/ThemeProvider";
+import { ThemeProvider } from "@shared/ui/ThemeProvider";
 import { Component } from "@model/index";
-import { Footer } from "@components/Footer";
-import { MainLayout } from "@components/MainLayout";
+import { Footer } from "@shared/ui/Footer";
+import { MainLayout } from "@shared/ui/MainLayout";
 import "@mantine/core/styles.css";
 import "./global.css";
-import { Content } from "@components/Content";
+import { Content } from "@shared/ui/Content";
 import Transition from "@shared/ui/Transition";
+import { PageLoadingBar } from "@shared/ui/PageLoadingBar";
+import { ResourceLoader } from "@shared/ui/ResourceLoader";
 
 export const metadata = {
   title: "Filatique",
@@ -15,18 +17,19 @@ export const metadata = {
 
 const RootLayout: FC<Component> = ({ children }) => {
 
-  console.log('root layout render');
-
   return (
     <html lang="en">
       <body>
         <ThemeProvider>
-          <MainLayout>
-            <Transition>
-              <Content>{children}</Content>
-            </Transition>
-            <Footer />
-          </MainLayout>
+          <PageLoadingBar />
+          <ResourceLoader>
+            <MainLayout>
+              <Transition>
+                <Content>{children}</Content>
+              </Transition>
+              <Footer />
+            </MainLayout>
+          </ResourceLoader>
         </ThemeProvider>
       </body>
     </html>

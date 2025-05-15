@@ -1,0 +1,47 @@
+.footer {
+    position: fixed; /* Фиксированное позиционирование */
+    bottom: 0; /* Прикрепляем к нижней части экрана */
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Высокий z-index, чтобы быть поверх контента */
+    min-height: 4rem;
+    margin-top: auto;
+    background: linear-gradient(to top, 
+                rgba(0, 0, 0, 0.7) 0%, 
+                rgba(0, 0, 0, 0.5) 30%, 
+                rgba(0, 0, 0, 0.3) 60%, 
+                rgba(0, 0, 0, 0) 100%); /* Градиент от темного к прозрачному снизу вверх */
+    
+    @media (max-width: $mantine-breakpoint-sm) {
+        /* Для мобильных устройств можно изменить поведение */
+        position: relative; /* Или оставить fixed, если нужно */
+    }
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: var(--mantine-spacing-md);
+    padding-right: var(--mantine-spacing-md);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: filter .5s;
+    filter: drop-shadow(0px 0px 25px rgba(255,255,255,0));
+
+    text-transform: uppercase;
+    text-decoration: none;
+
+    @media (max-width: $mantine-breakpoint-sm) {
+        height: rem(42px);
+        width: 100%;
+    }
+
+    @mixin hover {
+        text-shadow: 0px 0px 25px rgba(255, 255, 255, 0.71);
+
+        filter: drop-shadow(0px 0px 25px rgba(255, 255, 255, 0.71));
+    }
+
+}

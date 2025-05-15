@@ -1,5 +1,23 @@
-import { Header } from "@components/Header";
+import { Header } from "@shared/ui/Header";
+import { ReleaseList } from "@entities/releases/ui/ReleaseList";
+import { Group, Anchor, Box } from "@mantine/core";
+import classes from "./page.module.css";
 
 export default function Listen() {
-  return <Header>Listen</Header>;
+  return (
+    <>
+      <Header>
+        <Box className={classes.navigationLinks}>
+          <Anchor href="#releases" className={classes.navigationLink}>
+            Releases
+          </Anchor>
+          /
+          <Anchor href="#mixes" className={classes.navigationLink}>
+            Mixes
+          </Anchor>
+        </Box>
+      </Header>
+      <ReleaseList />
+    </>
+  );
 }

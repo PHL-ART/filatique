@@ -1,0 +1,17 @@
+.loadingBarContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.loadingBar {
+  height: 3px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Переопределение стилей Mantine для белой полосы */
+.loadingBar [role="progressbar"] {
+  background-color: white;
+}

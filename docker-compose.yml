@@ -1,0 +1,60 @@
+services:
+  # Database service (e.g., PostgreSQL)
+  db:
+    image: postgres:13
+    container_name: filatique-pg
+    ports:
+      - "5433:5432"
+    expose:
+      - ${POSTGRES_PORT}
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - filatique_db_data:/var/lib/postgresql/data
+    networks:
+      - filatique-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: filatique-pgadmin
+    depends_on:
+      - db
+    ports:
+      - "5555:80"
+    expose:
+      - 5555
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    volumes:
+      - filatique_pgadmin_data:/var/lib/pgadmin
+    restart: unless-stopped
+    networks:
+      - filatique-network
+
+  # Prisma service (Next.js application)
+  next-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - filatique-network
+
+networks:
+  filatique-network:
+    driver: bridge
+
+volumes:
+  filatique_db_data:
+  filatique_pgadmin_data:
+
+

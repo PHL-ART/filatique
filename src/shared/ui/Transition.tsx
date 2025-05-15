@@ -3,6 +3,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import FrozenRoute from "./FrozenRoute";
+import { useLoadingStore } from "@shared/store/loading";
+import { useEffect } from "react";
 
 export default function Transition({
   children,
@@ -10,8 +12,19 @@ export default function Transition({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const { startLoading, stopLoading } = useLoadingStore();
 
-  console.log('Transition render');
+  // Запускаем индикатор загрузки при изменении пути
+  useEffect(() => {
+    startLoading();
+    
+    // Останавливаем индикатор загрузки после завершения анимации
+    const timer = setTimeout(() => {
+      stopLoading();
+    }, 600); // Немного больше, чем длительность анимации
+    
+    return () => clearTimeout(timer);
+  }, [pathname, startLoading, stopLoading]);
 
   return (
     <AnimatePresence mode="wait">
@@ -23,6 +36,7 @@ export default function Transition({
           animate={{ opacity: 0 }}
           exit={{ opacity: 0 }}
           transition={{ ease: "easeOut", duration: 0.5 }}
+          style={{ pointerEvents: "none" }} // Отключаем перехват кликов
         ></motion.div>
         <motion.div
           className="fade-in"
@@ -30,6 +44,7 @@ export default function Transition({
           animate={{ opacity: 0 }}
           exit={{ opacity: 1 }}
           transition={{ ease: "easeOut", duration: 0.5 }}
+          style={{ pointerEvents: "none" }} // Отключаем перехват кликов
         ></motion.div>
       </motion.div>
     </AnimatePresence>
