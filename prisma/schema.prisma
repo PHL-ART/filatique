@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Перечисление типов релизов
+enum ReleaseType {
+  ALBUM
+  SINGLE
+  MIX
+}
+
+// Перечисление типов статей
+enum ArticleType {
+  ARTICLE
+  INTERVIEW
+}
+
+model Release {
+  id            Int           @id @default(autoincrement())
+  dateReleased  DateTime
+  title         String
+  titleAlt      String?
+  descriptionRu String
+  descriptionEn String
+  imageURL      String        // Путь к изображению в формате: /assets/images/releases/{filename}
+  type          ReleaseType   // Тип релиза: альбом, сингл или микс
+  listenLinks   ListenLinks[] // Связь с ссылками для прослушивания
+}
+
+model Service {
+  id          Int           @id @default(autoincrement())
+  name        String        // Название сервиса (Spotify, Apple Music и т.д.)
+  listenLinks ListenLinks[] // Связь с ссылками для прослушивания
+}
+
+model ListenLinks {
+  id        Int      @id @default(autoincrement())
+  link      String   // Ссылка на релиз в данном сервисе
+  releaseId Int      // Внешний ключ для связи с релизом
+  serviceId Int      // Внешний ключ для связи с сервисом
+  release   Release  @relation(fields: [releaseId], references: [id])
+  service   Service  @relation(fields: [serviceId], references: [id])
+}
+
+// Модель для раздела Press 
+model Index {
+  id           Int         @id @default(autoincrement())
+  year         Int         // Год публикации
+  publisher    String      // Название издательства
+  type         ArticleType // Тип публикации: статья или интервью
+  link         String      // Ссылка на статью
+  title        String?     // Опциональное название статьи
+  description  String?     // Опциональное описание
+}
