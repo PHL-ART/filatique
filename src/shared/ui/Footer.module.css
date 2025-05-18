@@ -3,7 +3,7 @@
     bottom: 0; /* Прикрепляем к нижней части экрана */
     left: 0;
     width: 100%;
-    z-index: 1000; /* Высокий z-index, чтобы быть поверх контента */
+    z-index: 100; /* Высокий z-index, чтобы быть поверх контента */
     min-height: 4rem;
     margin-top: auto;
     background: linear-gradient(to top, 

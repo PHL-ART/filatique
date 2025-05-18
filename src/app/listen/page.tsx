@@ -1,6 +1,6 @@
 import { Header } from "@shared/ui/Header";
 import { ReleaseList } from "@entities/releases/ui/ReleaseList";
-import { Group, Anchor, Box } from "@mantine/core";
+import { Anchor, Box } from "@mantine/core";
 import classes from "./page.module.css";
 
 export default function Listen() {

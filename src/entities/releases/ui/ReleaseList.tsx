@@ -42,7 +42,7 @@ export function ReleaseList() {
         <Container fluid size="lg" py="xl">
             {regularReleases.length > 0 && (
                 <Box id="releases" mb="xl">
-                    <Title order={2} mb="md" className={classes.sectionTitle}>Relises</Title>
+                    <Title order={2} mb="md" className={classes.sectionTitle}>Releases</Title>
                     <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="xl" verticalSpacing="xl">
                         {regularReleases.map((release) => (
                             <ReleaseCard key={release.id} release={release} />

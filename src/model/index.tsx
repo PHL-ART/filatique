@@ -23,3 +23,13 @@ export type Release = {
   type: 'ALBUM' | 'SINGLE' | 'MIX';
   listenLinks: ListenLink[];
 };
+
+export type Index = {
+  id: number,
+  year: number,
+  publisher: string,
+  type: string,
+  link: string,
+  title: string,
+  description: string
+}
