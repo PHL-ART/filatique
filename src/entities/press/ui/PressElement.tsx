@@ -1,7 +1,7 @@
 "use client";
 
 
-import { Box, Flex } from '@mantine/core';
+import { Box, Container, Flex, Grid } from '@mantine/core';
 import { Index } from '@model/index';
 import classes from './PressElement.module.css';
 import Link from 'next/link';
@@ -13,25 +13,16 @@ interface PressElementProps {
 export function PressElement({ index }: PressElementProps) {
 
     return (
-        <Flex
-            mih={50}
-            justify="space-between"
-            align="center"
-            direction="row"
-            wrap="nowrap"
-            className={classes.pressContainer}>
-            <Box >
-                {String(index.year)}
-            </Box>
-            <Box >
-                {index.title}
-            </Box>
-
-            <Link href={index.link}>
-                <Box className={classes.pressLink}>
-                    {index.publisher}
-                </Box>
-            </Link>
-        </Flex>
+        <Container w={"100%"}>
+            <Grid className={classes.pressContainer}>
+                <Grid.Col span={1} className={classes.pressYear}>{String(index.year)}</Grid.Col>
+                <Grid.Col span={8} className={classes.pressTitle}>{index.title}</Grid.Col>
+                <Grid.Col span={3}>
+                    <Link href={index.link} className={classes.pressLink}>
+                        {index.publisher}
+                    </Link>
+                </Grid.Col>
+            </Grid>
+        </Container>
     );
 }

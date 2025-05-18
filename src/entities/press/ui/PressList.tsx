@@ -25,11 +25,11 @@ export function PressList() {
     }, []);
 
     if (error || indexes.length === 0) {
-        return null;
+        return null
     }
 
     return (
-        <Container fluid size="lg" py="xl">
+        <Container fluid size="lg" py={'calc(4.5rem * var(--mantine-scale))'}>
             <Flex direction={'column'} gap={"xl"}>
                 {!!indexes.length && indexes.map((index) => (
                     <PressElement key={index.id} index={index} />

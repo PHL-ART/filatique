@@ -1,5 +1,41 @@
 .pressContainer {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.pressYear {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.pressTitle {
+    font-size: 1.5rem;
+    font-weight: 800;
 }
 
 .pressLink {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.pressLink::after {
+    content: "→";
+    font-weight: 800;
+    position: absolute;
+    color: #fff;
+    top: -0.3rem;
+    right: -1.5rem;
+    margin-left: 0.5rem;
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease;
+}
+
+.pressLink:hover::after {
+    transform: rotate(0deg);
+}
+
+.pressLink:active::after {
+    transform: scale(1.05);
 }
