@@ -29,7 +29,7 @@ export function PressList() {
     }
 
     return (
-        <Container fluid size="lg" py={'calc(4.5rem * var(--mantine-scale))'}>
+        <Container fluid size="lg" p={0}>
             <Flex direction={'column'} gap={"xl"}>
                 {!!indexes.length && indexes.map((index) => (
                     <PressElement key={index.id} index={index} />

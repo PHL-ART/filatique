@@ -3,5 +3,10 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    overflow: hidden;
+    /* overflow: hidden; */
+    padding: 7.5rem 0;
 }
+
+/* .scrollArea {
+    scroll-behavior: smooth !important;
+} */

@@ -20,6 +20,23 @@
     position: relative;
 }
 
+.pressLink::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #fff;
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.pressLink:hover::before {
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
 .pressLink::after {
     content: "→";
     font-weight: 800;
