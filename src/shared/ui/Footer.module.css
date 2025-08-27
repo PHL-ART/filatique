@@ -11,11 +11,6 @@
                 rgba(0, 0, 0, 0.5) 30%, 
                 rgba(0, 0, 0, 0.3) 60%, 
                 rgba(0, 0, 0, 0) 100%); /* Градиент от темного к прозрачному снизу вверх */
-    
-    @media (max-width: $mantine-breakpoint-sm) {
-        /* Для мобильных устройств можно изменить поведение */
-        position: relative; /* Или оставить fixed, если нужно */
-    }
 }
 
 .link {
@@ -36,6 +31,35 @@
     @media (max-width: $mantine-breakpoint-sm) {
         height: rem(42px);
         width: 100%;
+        display: none;
+    }
+
+    @mixin hover {
+        text-shadow: 0px 0px 25px rgba(255, 255, 255, 0.71);
+
+        filter: drop-shadow(0px 0px 25px rgba(255, 255, 255, 0.71));
+    }
+
+}
+
+.menu {
+    display: none;
+    align-items: center;
+    height: 100%;
+    padding-left: var(--mantine-spacing-md);
+    padding-right: var(--mantine-spacing-md);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: filter .5s;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 25px rgba(255,255,255,0));
+
+    text-transform: uppercase;
+    text-decoration: none;
+
+    @media (max-width: $mantine-breakpoint-sm) {
+        display: flex;
     }
 
     @mixin hover {

@@ -3,7 +3,7 @@
 import { Group } from "@mantine/core";
 import Link from "next/link";
 import classes from "./Footer.module.css";
-import { IconPlus } from "@tabler/icons-react";
+import { IconMenu, IconMenu2, IconPlus } from "@tabler/icons-react";
 import { usePathname } from "next/navigation";
 import { PlayButton } from "./PlayButton";
 
@@ -32,6 +32,9 @@ export function Footer() {
         <Link href="/info" className={classes.link}>
           Info
         </Link>
+        <div className={classes.menu}>
+          <IconMenu2 size={24} color="white" /> Menu
+        </div>
       </Group>
     </footer>
   );

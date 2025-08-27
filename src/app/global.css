@@ -132,6 +132,8 @@ img {
   margin: -7.5vh -7.5%;
 }
 
+/* fonts */
+
 @font-face {
   font-family: 'Raleway';
   src: url('/fonts/Raleway.ttf') format('truetype-variations');
