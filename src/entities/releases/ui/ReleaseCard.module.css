@@ -20,9 +20,18 @@
     aspect-ratio: 1 / 1;
 }
 
+.releaseCard {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: transparent;
+    border: none;
+}
+
 .coverImage {
-    width: 100%;
-    height: 100%;
+    /* width: 100%; */
+    /* height: 100%; */
+    aspect-ratio: 1 / 1;
     object-fit: cover;
 }
 
@@ -33,7 +42,7 @@
     align-items: center;
     padding: 0px 2rem 0px;
     gap: 1rem;
-    justify-content:space-between
+    justify-content: space-between;
 }
 
 .releaseTitle {

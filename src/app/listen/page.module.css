@@ -5,6 +5,12 @@
     margin-top: 1rem;
     font-size: 2rem;
     font-weight: 700;
+
+    @media screen and (max-width: 768px) {
+        gap: 0.25rem;
+        flex-wrap: wrap;
+        margin-top: 0rem;
+    }
 }
 
 .navigationLink {

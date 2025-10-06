@@ -1,17 +1,23 @@
 .footer {
-    position: fixed; /* Фиксированное позиционирование */
-    bottom: 0; /* Прикрепляем к нижней части экрана */
+    position: fixed;
+    bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 100; /* Высокий z-index, чтобы быть поверх контента */
+    z-index: 100;
     min-height: 4rem;
     margin-top: auto;
-    background: linear-gradient(to top, 
-                rgba(0, 0, 0, 0.7) 0%, 
-                rgba(0, 0, 0, 0.5) 30%, 
-                rgba(0, 0, 0, 0.3) 60%, 
-                rgba(0, 0, 0, 0) 100%); /* Градиент от темного к прозрачному снизу вверх */
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.5) 30%,
+            rgba(0, 0, 0, 0.3) 60%,
+            rgba(0, 0, 0, 0) 100%);
+
+    @media (max-width: $mantine-breakpoint-sm) {
+        min-height: 3rem;
+    }
 }
+
+
 
 .link {
     display: flex;
@@ -23,7 +29,7 @@
     font-weight: 700;
     font-size: 1.5rem;
     transition: filter .5s;
-    filter: drop-shadow(0px 0px 25px rgba(255,255,255,0));
+    filter: drop-shadow(0px 0px 25px rgba(255, 255, 255, 0));
 
     text-transform: uppercase;
     text-decoration: none;
@@ -53,7 +59,7 @@
     font-size: 1.5rem;
     transition: filter .5s;
     cursor: pointer;
-    filter: drop-shadow(0px 0px 25px rgba(255,255,255,0));
+    filter: drop-shadow(0px 0px 25px rgba(255, 255, 255, 0));
 
     text-transform: uppercase;
     text-decoration: none;
@@ -67,5 +73,20 @@
 
         filter: drop-shadow(0px 0px 25px rgba(255, 255, 255, 0.71));
     }
+}
 
+.menuLink {
+    background: rgba(255, 255, 255, 1);
+    color: black;
+    width: 2rem;
+    height: 2rem;
+    overflow: hidden;
+    display: flex
+;
+    border-radius: 50%;
+    text-shadow: 0px 0px 0.75rem rgba(0, 0, 0, 8);
+    filter: drop-shadow(0px 0px 0.75rem rgba(0, 0, 0, 8));
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

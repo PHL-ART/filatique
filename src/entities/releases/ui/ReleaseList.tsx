@@ -39,7 +39,7 @@ export function ReleaseList() {
     }
 
     return (
-        <Container fluid p={0}>
+        <Container fluid className={classes.container}>
             {regularReleases.length > 0 && (
                 <Box id="releases" mb="xl" style={{ scrollMarginTop: '100px' }}>
                     <Title order={2} mb="md" className={classes.sectionTitle}>Releases</Title>
