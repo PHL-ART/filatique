@@ -19,7 +19,9 @@ export const Footer: FC = () => {
     <footer className={classes.footer}>
       <Group align="center" justify={"space-around"} h="100%" gap={0}>
         {isOnRootPage ? (
-          <PlayButton />
+          <div className={classes.playButtonWrapper}>
+            <PlayButton />
+          </div>
         ) : (
           <Link href="/" className={classes.link}>
             <IconPlus size={36} color="white" />

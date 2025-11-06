@@ -1,8 +1,8 @@
 .container {
     padding: 0;
 
-    @media screen and (max-width: 768px) {
-        padding: 0 0 4rem 0;
+    @media screen and (max-width: 576px) {
+        padding: 0;
     }
 }
 
@@ -11,9 +11,10 @@
     margin-bottom: 1.5rem;
     position: relative;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 576px) {
         text-align: center;
         margin-bottom: 0.5rem;
+        font-size: 1.5rem;
     }
 }
 

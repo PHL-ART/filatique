@@ -12,6 +12,13 @@ body {
   scroll-padding-top: 4.5rem;
 }
 
+@media screen and (max-width: 576px) {
+  html,
+  body {
+    font-size: 16px;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -130,6 +137,13 @@ img {
   will-change: transform;
   transition: transform 0.3s ease-out;
   margin: -7.5vh -7.5%;
+}
+
+@media screen and (max-width: 576px) {
+  .main-logo {
+    width: 12rem;
+    height: 4rem;
+  }
 }
 
 /* fonts */
