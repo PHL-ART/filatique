@@ -1,34 +1,58 @@
-# Stage 1: Install dependencies and build the application
-FROM node:16 AS builder
+ARG NODE_VERSION=22-alpine
 
-# Set working directory
+# =========================================
+# Stage 1: Install Dependencies
+# =========================================
+FROM node:${NODE_VERSION} AS deps
+
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json* ./
+RUN npm ci
 
-# Install dependencies
-RUN npm install
+# =========================================
+# Stage 2: Build the Next.js Application
+# =========================================
+FROM node:${NODE_VERSION} AS builder
 
-# Copy all source code into the container
+WORKDIR /app
+
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Build the Next.js application
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Generate Prisma client before building to keep schema in sync
+RUN npx prisma generate
 RUN npm run build
 
-# Stage 2: Production image
-FROM node:16-alpine AS production
+# =========================================
+# Stage 3: Production Runner
+# =========================================
+FROM node:${NODE_VERSION} AS runner
 
-# Set working directory
 WORKDIR /app
 
-# Copy only the necessary files from the build stage
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/package.json ./
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV HOSTNAME=0.0.0.0
+ENV PORT=3000
 
-# Expose the port that the app will run on
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
+USER nextjs
+
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "start"]
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+    CMD node -e "require('http').get('http://localhost:3000/api/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1))" || exit 1
+
+# Run Prisma migrations before starting the server to keep schema up to date
+CMD ["sh", "-c", "npx prisma migrate deploy && node server.js"]
