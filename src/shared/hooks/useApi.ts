@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { apiFetch } from '@shared/api/fetcher';
 
 interface UseApiOptions<T> {
@@ -24,7 +24,7 @@ export function useApi<T>({
     const [error, setError] = useState<Error | null>(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         if (skip) return;
 
         setIsLoading(true);
@@ -51,11 +51,11 @@ export function useApi<T>({
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [body, method, onError, onSuccess, skip, url]);
 
     useEffect(() => {
         fetchData();
-    }, [url, skip]);
+    }, [fetchData]);
 
     return {
         data,
