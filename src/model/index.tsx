@@ -33,3 +33,9 @@ export type Index = {
   title: string,
   description: string
 }
+
+export type Contact = {
+  id: number;
+  name: string;
+  link: string;
+};

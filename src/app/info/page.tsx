@@ -1,9 +1,12 @@
 "use client";
 
-import { useState, KeyboardEvent } from "react";
+import { useState, useEffect, KeyboardEvent } from "react";
 import Image from "next/image";
 import { Header } from "@shared/ui/Header";
 import { HeaderNavigation } from "@shared/ui/HeaderNavigation";
+import { apiFetch } from "@shared/api/fetcher";
+import { Contact } from "@model/index";
+import { ServiceIcon } from "@shared/ui/ServiceIcon";
 import classes from "./page.module.css";
 
 const navigationItems = [
@@ -31,6 +34,9 @@ In late 2024, Filat Astakhov announced that work on the next album titled "Dark"
 
 export default function Info() {
   const [language, setLanguage] = useState<"ru" | "en">("ru");
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [contactsError, setContactsError] = useState<string | null>(null);
+  const [contactsLoading, setContactsLoading] = useState<boolean>(true);
 
   const toggleLanguage = () => {
     setLanguage((prev) => (prev === "ru" ? "en" : "ru"));
@@ -42,6 +48,22 @@ export default function Info() {
       toggleLanguage();
     }
   };
+
+  useEffect(() => {
+    const fetchContacts = async () => {
+      try {
+        const data = await apiFetch<Contact[]>("/api/contacts");
+        setContacts(data);
+      } catch (error) {
+        console.error("Failed to load contacts:", error);
+        setContactsError("Не удалось загрузить контакты");
+      } finally {
+        setContactsLoading(false);
+      }
+    };
+
+    fetchContacts();
+  }, []);
 
   return (
     <>
@@ -79,9 +101,34 @@ export default function Info() {
 
         <section id="contacts" className={classes.section}>
           <h2 className={classes.sectionTitle}>Contacts</h2>
-          <div className={classes.contactsPlaceholder}>
-            Content will appear here soon
-          </div>
+          {contactsLoading ? (
+            <div className={classes.contactsPlaceholder}>Loading contacts…</div>
+          ) : contactsError ? (
+            <div className={classes.contactsPlaceholder}>{contactsError}</div>
+          ) : contacts.length === 0 ? (
+            <div className={classes.contactsPlaceholder}>
+              Contacts will appear here soon
+            </div>
+          ) : (
+            <div className={classes.contactsList}>
+              {contacts.map((contact) => (
+                <a
+                  key={contact.id}
+                  href={contact.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={classes.contactLink}
+                >
+                  <ServiceIcon
+                    service={contact.name}
+                    size={32}
+                    className={classes.contactIcon}
+                  />
+                  <span className={classes.contactName}>{contact.name}</span>
+                </a>
+              ))}
+            </div>
+          )}
         </section>
       </main>
     </>
