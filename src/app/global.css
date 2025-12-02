@@ -10,6 +10,10 @@ body {
   background: rgba(0, 0, 0, 1);
   scroll-behavior: smooth;
   scroll-padding-top: 4.5rem;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 @media screen and (max-width: 576px) {
