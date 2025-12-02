@@ -6,35 +6,40 @@ import { useLoadingStore } from "@shared/store/loading";
 
 const LoadingAwareRoute = ({ children }: { children: ReactNode }) => {
   const context = useContext(LayoutRouterContext);
-  const frozen = context ? useRef(context).current : null;
+  const frozen = useRef(context);
   const { isLoading, stopLoading } = useLoadingStore();
+
+  if (context && !frozen.current) {
+    frozen.current = context;
+  }
   
   // Проверяем загрузку ресурсов
   useEffect(() => {
-    const checkResourcesLoaded = () => {
-      if (document.readyState === 'complete') {
-        stopLoading();
-      } else {
-        window.addEventListener('load', () => {
-          stopLoading();
-        });
-      }
+    if (!isLoading) return;
+
+    if (document.readyState === 'complete') {
+      stopLoading();
+      return;
+    }
+
+    const handleLoad = () => {
+      stopLoading();
     };
 
-    checkResourcesLoaded();
+    window.addEventListener('load', handleLoad);
 
     return () => {
-      window.removeEventListener('load', checkResourcesLoaded);
+      window.removeEventListener('load', handleLoad);
     };
-  }, [stopLoading]);
+  }, [isLoading, stopLoading]);
 
   // Проверяем наличие контекста перед использованием Provider
-  if (!frozen) {
+  if (!context) {
     return <>{children}</>;
   }
 
   return (
-    <LayoutRouterContext.Provider value={frozen}>
+    <LayoutRouterContext.Provider value={frozen.current ?? context}>
       {children}
     </LayoutRouterContext.Provider>
   );

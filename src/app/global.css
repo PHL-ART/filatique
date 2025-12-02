@@ -8,6 +8,19 @@ body {
   font-size: 18px;
   color: white;
   background: rgba(0, 0, 0, 1);
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+@media screen and (max-width: 576px) {
+  html,
+  body {
+    font-size: 16px;
+  }
 }
 
 * {
@@ -130,6 +143,15 @@ img {
   margin: -7.5vh -7.5%;
 }
 
+@media screen and (max-width: 576px) {
+  .main-logo {
+    width: 12rem;
+    height: 4rem;
+  }
+}
+
+/* fonts */
+
 @font-face {
   font-family: 'Raleway';
   src: url('/fonts/Raleway.ttf') format('truetype-variations');
@@ -142,6 +164,14 @@ img {
   font-family: 'Manrope';
   src: url('/fonts/Manrope.ttf') format('truetype-variations');
   font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JostExtraBold';
+  src: url('/fonts/Jost-ExtraBold.ttf') format('truetype-variations');
+  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }

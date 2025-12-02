@@ -1,11 +1,13 @@
-import { Container } from "@mantine/core";
-import { Component } from "@model/index";
 import { FC } from "react";
+import { Container, rem } from "@mantine/core";
+import { Component } from "@model/index";
+import classes from "./Content.module.css";
 
-export const Content: FC<Component> = ({ children }) => {
-  return (
-    <Container fluid h="100%" px={48} py={48} style={{position: 'relative'}}>
-      {children}
-    </Container>
-  );
-};
+export const Content: FC<Component> = ({ children }) => (
+  <Container
+    fluid
+    className={classes.container}
+  >
+    {children}
+  </Container>
+);

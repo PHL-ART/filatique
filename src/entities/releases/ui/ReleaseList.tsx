@@ -26,11 +26,11 @@ export function ReleaseList() {
     }, []);
 
     // Разделение релизов на категории
-    const regularReleases = releases.filter(release => 
+    const regularReleases = releases.filter(release =>
         release.type === 'ALBUM' || release.type === 'SINGLE'
     );
-    
-    const mixes = releases.filter(release => 
+
+    const mixes = releases.filter(release =>
         release.type === 'MIX'
     );
 
@@ -39,22 +39,26 @@ export function ReleaseList() {
     }
 
     return (
-        <Container fluid size="lg" py="xl">
+        <Container fluid className={classes.container}>
             {regularReleases.length > 0 && (
-                <Box id="releases" mb="xl">
+                <Box
+                    id="releases"
+                    mb="xl"
+                    style={{ scrollMarginTop: '100px', paddingInline: '0.25rem' }}
+                >
                     <Title order={2} mb="md" className={classes.sectionTitle}>Releases</Title>
-                    <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="xl" verticalSpacing="xl">
+                    <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="xl" verticalSpacing="xl">
                         {regularReleases.map((release) => (
                             <ReleaseCard key={release.id} release={release} />
                         ))}
                     </SimpleGrid>
                 </Box>
             )}
-            
+
             {mixes.length > 0 && (
-                <Box id="mixes" mt="xl">
+                <Box id="mixes" mt="xl" style={{ scrollMarginTop: '100px' }}>
                     <Title order={2} mb="md" className={classes.sectionTitle}>Mixes</Title>
-                    <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="xl" verticalSpacing="xl">
+                    <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="xl" verticalSpacing="xl">
                         {mixes.map((release) => (
                             <ReleaseCard key={release.id} release={release} />
                         ))}

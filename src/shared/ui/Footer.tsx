@@ -1,28 +1,37 @@
 "use client";
 
-import { Group } from "@mantine/core";
-import Link from "next/link";
-import classes from "./Footer.module.css";
-import { IconPlus } from "@tabler/icons-react";
-import { usePathname } from "next/navigation";
-import { PlayButton } from "./PlayButton";
+import { FC, useContext } from 'react';
+import { Group } from '@mantine/core';
+import Link from 'next/link';
+import classes from './Footer.module.css';
+import { IconMenu2, IconHome } from '@tabler/icons-react';
+import { usePathname } from 'next/navigation';
+import MobileMenuModal from './MobileMenuModal';
+import { ResoucereLoaderContext } from './ResourceLoader';
 
-export function Footer() {
-  const pathname = usePathname();
-  const isRoot = pathname === "/";
+export const Footer: FC = () => {
+  const { modalIsOpen, setModalOpen } = useContext(ResoucereLoaderContext);
+  const currentPathname = usePathname();
+  const isOnRootPage = currentPathname === '/';
 
   return (
     <footer className={classes.footer}>
-      <Group align="center" justify="space-around" h="100%" gap={0}>
-        <>
-          {isRoot ? (
-            <PlayButton />
-          ) : (
+      <Group align="center" justify={"space-around"} h="100%" gap={0}>
+
+        {!isOnRootPage && (
+          <div className={classes.playButtonWrapper}>
             <Link href="/" className={classes.link}>
-              <IconPlus size={36} color="white" />
+              <IconHome size={36} color="white" />
             </Link>
-          )}
-        </>
+          </div>
+        )}
+
+        <div className={classes.menu}>
+          <div className={classes.menuLink}>
+            <IconMenu2 size={24} color="black" onClick={() => setModalOpen(true)} />
+          </div>
+          <MobileMenuModal opened={modalIsOpen} onClose={() => setModalOpen(false)} />
+        </div>
         <Link href="/listen" className={classes.link}>
           Listen
         </Link>
@@ -35,4 +44,6 @@ export function Footer() {
       </Group>
     </footer>
   );
-}
+};
+
+export default Footer;

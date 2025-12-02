@@ -5,17 +5,19 @@ import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.sha
 
 const FrozenRoute = ({ children }: { children: ReactNode }) => {
   const context = useContext(LayoutRouterContext);
-  
-  // Используем useRef только если контекст существует
-  const frozen = context ? useRef(context).current : null;
+  const frozen = useRef(context);
+
+  if (context && !frozen.current) {
+    frozen.current = context;
+  }
 
   // Проверяем наличие контекста перед использованием Provider
-  if (!frozen) {
+  if (!context) {
     return <>{children}</>;
   }
 
   return (
-    <LayoutRouterContext.Provider value={frozen}>
+    <LayoutRouterContext.Provider value={frozen.current ?? context}>
       {children}
     </LayoutRouterContext.Provider>
   );

@@ -23,12 +23,13 @@ export const ReleaseModal: FC<ReleaseModalProps> = ({
             opened={opened}
             onClose={onClose}
             centered
-            size="xl"
+            size="auto"
             withCloseButton={true}
             classNames={{
                 content: classes.modalContent,
                 body: classes.modalBody,
-                overlay: classes.modalOverlay
+                overlay: classes.modalOverlay,
+                close: classes.modalCloseButton
             }}
         >
             <Box className={classes.modalContainer}>

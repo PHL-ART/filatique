@@ -1,10 +1,9 @@
 .header {
     position: fixed;
-    /* Фиксированное позиционирование, чтобы хедер был всегда поверх */
     top: 0;
     left: 0;
     z-index: 100;
-    /* Высокий z-index, чтобы быть поверх всего контента */
+    overflow: visible;
     padding-top: var(--mantine-spacing-md);
     height: rem(120px);
     width: 100%;
@@ -15,14 +14,55 @@
             rgba(0, 0, 0, 0) 100%);
 
     @media (max-width: $mantine-breakpoint-sm) {
-        height: rem(42px);
+        top: 0;
+        height: 2rem;
         width: 100%;
+        padding-top: var(--mantine-spacing-xs);
+
+        background: linear-gradient(to bottom,
+                rgba(0, 0, 0, 0.9) 0%,
+                rgba(0, 0, 0, 0.55) 60%,
+                rgba(0, 0, 0, 0) 100%);
     }
 }
 
+.header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 240%;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.6) 45%,
+            rgba(0, 0, 0, 0.35) 75%,
+            rgba(0, 0, 0, 0) 100%);
+}
+
 .title {
+    padding: 0 2rem;
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 800;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'JostExtraBold', sans-serif;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 576px) {
+        font-size: 1.5rem;
+    }
+
+}
+
+@media (max-width: $mantine-breakpoint-sm) {
+    .header::after {
+        height: 320%;
+        background: linear-gradient(to bottom,
+                rgba(0, 0, 0, 0.9) 0%,
+                rgba(0, 0, 0, 0.6) 55%,
+                rgba(0, 0, 0, 0.35) 80%,
+                rgba(0, 0, 0, 0) 100%);
+    }
 }

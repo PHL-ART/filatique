@@ -1,6 +1,10 @@
 .pressContainer {
     font-weight: 800;
     font-size: 1.5rem;
+
+    @media screen and (max-width: 576px) {
+        font-size: 1rem;
+    }
 }
 
 .pressYear {
@@ -10,6 +14,10 @@
 .pressTitle {
     font-size: 1.5rem;
     font-weight: 800;
+
+    @media screen and (max-width: 576px) {
+        font-size: 1.1rem;
+    }
 }
 
 .pressLink {
@@ -18,6 +26,27 @@
     text-decoration: none;
     cursor: pointer;
     position: relative;
+
+    @media screen and (max-width: 576px) {
+        font-size: 1rem;
+    }
+}
+
+.pressLink::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #fff;
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.pressLink:hover::before {
+    transform: scaleX(0);
+    transform-origin: right;
 }
 
 .pressLink::after {
@@ -30,6 +59,11 @@
     margin-left: 0.5rem;
     transform: rotate(-45deg);
     transition: transform 0.3s ease;
+
+    @media screen and (max-width: 576px) {
+        right: -1.2rem;
+        font-size: 0.9rem;
+    }
 }
 
 .pressLink:hover::after {

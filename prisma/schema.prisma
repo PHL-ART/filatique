@@ -63,3 +63,9 @@ model Index {
   title        String?     // Опциональное название статьи
   description  String?     // Опциональное описание
 }
+
+model Contact {
+  id   Int    @id @default(autoincrement())
+  name String
+  link String
+}

@@ -1,0 +1,16 @@
+.infoPage {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+@media screen and (max-width: 576px) {
+    .infoPage {
+        padding: 0rem 1.5rem 3rem;
+        gap: 3rem;
+    }
+}
+

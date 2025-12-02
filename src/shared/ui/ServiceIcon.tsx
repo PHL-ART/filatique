@@ -11,7 +11,13 @@ import {
     IconBrandDeezer,
     IconBrandVk,
     IconMusic,
-    IconBrandTidal
+    IconBrandTidal,
+    IconBrandFacebook,
+    IconBrandInstagram,
+    IconBrandLastfm,
+    IconMail,
+    IconBrandTelegram,
+    IconBrandX
 } from '@tabler/icons-react';
 import classes from './ServiceIcon.module.css';
 
@@ -36,9 +42,11 @@ export const ServiceIcon: FC<ServiceIconProps> = ({
             case 'spotify':
                 return <IconBrandSpotify size={size} stroke={1.5} />;
             case 'applemusic':
+            case 'apple music':
                 return <IconBrandApple size={size} stroke={1.5} />;
             case 'youtube':
             case 'youtubemusic':
+            case 'youtube music':
                 return <IconBrandYoutube size={size} stroke={1.5} />;
             case 'soundcloud':
                 return <IconBrandSoundcloud size={size} stroke={1.5} />;
@@ -48,6 +56,20 @@ export const ServiceIcon: FC<ServiceIconProps> = ({
                 return <IconBrandDeezer size={size} stroke={1.5} />;
             case 'vk':
                 return <IconBrandVk size={size} stroke={1.5} />;
+            case 'facebook':
+                return <IconBrandFacebook size={size} stroke={1.5} />;
+            case 'instagram':
+                return <IconBrandInstagram size={size} stroke={1.5} />;
+            case 'lastfm':
+            case 'last fm':
+                return <IconBrandLastfm size={size} stroke={1.5} />;
+            case 'mail':
+                return <IconMail size={size} stroke={1.5} />;
+            case 'telegram':
+                return <IconBrandTelegram size={size} stroke={1.5} />;
+            case 'x':
+            case 'twitter':
+                return <IconBrandX size={size} stroke={1.5} />;
             default:
                 // Проверяем, есть ли у нас SVG-файл для этого сервиса
                 if (hasSvgFile(normalizedName)) {
@@ -72,6 +94,8 @@ export const ServiceIcon: FC<ServiceIconProps> = ({
         // Список сервисов, для которых у нас есть SVG-файлы
         const svgServices = [
             'yandexmusic',
+            'yandex music',
+            'yandex',
             'zvuk'
             // Добавьте другие сервисы, для которых есть SVG-файлы
         ];
@@ -84,6 +108,8 @@ export const ServiceIcon: FC<ServiceIconProps> = ({
         // Маппинг сервисов на пути к SVG-файлам
         const svgMap: Record<string, string> = {
             'yandexmusic': '/assets/icons/services/yandex-music.svg',
+            'yandex music': '/assets/icons/services/yandex-music.svg',
+            'yandex': '/assets/icons/services/yandex-music.svg',
             'zvuk': '/assets/icons/services/zvuk.svg',
             // Добавьте другие сервисы по необходимости
         };
