@@ -29,6 +29,25 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({
             : classes.link;
     };
 
+    const renderLinkLabel = (path: string, label: string) => {
+        const isActive = currentPathname === path;
+        return (
+            <>
+                {isActive && (
+                    <span className={classes.linkDivider} aria-hidden="true">
+                        &middot;
+                    </span>
+                )}
+                <span>{label}</span>
+                {isActive && (
+                    <span className={classes.linkDivider} aria-hidden="true">
+                        &middot;
+                    </span>
+                )}
+            </>
+        );
+    };
+
     // Функция для обработки клика на ссылку
     // Модальное окно будет закрыто автоматически ResourceLoader'ом после загрузки новой страницы
     const handleLinkClick = () => {
@@ -73,7 +92,7 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({
                             className={getLinkClassName('/')}
                             onClick={handleLinkClick}
                         >
-                            HOME
+                            {renderLinkLabel('/', 'HOME')}
                         </Link>
                     )}
                     <Link 
@@ -81,21 +100,21 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({
                         className={getLinkClassName('/listen')}
                         onClick={handleLinkClick}
                     >
-                        Listen
+                        {renderLinkLabel('/listen', 'Listen')}
                     </Link>
                     <Link 
                         href="/press" 
                         className={getLinkClassName('/press')}
                         onClick={handleLinkClick}
                     >
-                        Press
+                        {renderLinkLabel('/press', 'Press')}
                     </Link>
                     <Link 
                         href="/info" 
                         className={getLinkClassName('/info')}
                         onClick={handleLinkClick}
                     >
-                        Info
+                        {renderLinkLabel('/info', 'Info')}
                     </Link>
                 </Flex>
                 <div className={classes.closeButton} onClick={onClose}>

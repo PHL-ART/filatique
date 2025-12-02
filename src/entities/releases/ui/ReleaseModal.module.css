@@ -107,24 +107,31 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
+    width: 100%;
 }
 
 .listenLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.5rem;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.35);
     text-decoration: none;
     color: white;
-    transition: transform 0.2s ease;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0.8rem 1.2rem;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.listenLink:hover {
-    transform: scale(1.05);
-    background-color: rgba(255, 255, 255, 0.2);
+.listenLink:hover,
+.listenLink:focus-visible {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.6);
 }
 
 .serviceIconContainer {
