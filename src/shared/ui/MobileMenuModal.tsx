@@ -67,6 +67,15 @@ const MobileMenuModal: FC<MobileMenuModalProps> = ({
                     flex-grow={1}
                     h="100%"
                 >
+                    {currentPathname !== '/' && (
+                        <Link
+                            href="/"
+                            className={getLinkClassName('/')}
+                            onClick={handleLinkClick}
+                        >
+                            HOME
+                        </Link>
+                    )}
                     <Link 
                         href="/listen" 
                         className={getLinkClassName('/listen')}

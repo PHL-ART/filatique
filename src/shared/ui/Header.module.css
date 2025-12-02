@@ -50,6 +50,10 @@
     font-family: 'JostExtraBold', sans-serif;
     text-transform: uppercase;
 
+    @media screen and (max-width: 576px) {
+        font-size: 1.5rem;
+    }
+
 }
 
 @media (max-width: $mantine-breakpoint-sm) {
