@@ -165,6 +165,14 @@ img {
 }
 
 @font-face {
+  font-family: 'JostExtraBold';
+  src: url('/fonts/Jost-ExtraBold.ttf') format('truetype-variations');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Raleway Italic';
   src: url('/fonts/Raleway-Italic.ttf') format('truetype-variations');
   font-weight: 100 900;

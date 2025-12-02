@@ -11,7 +11,9 @@ export default function Listen() {
           <Anchor href="#releases" className={classes.navigationLink}>
             Releases
           </Anchor>
-          /
+          <span className={classes.navigationDivider} aria-hidden="true">
+            &middot;
+          </span>
           <Anchor href="#mixes" className={classes.navigationLink}>
             Mixes
           </Anchor>

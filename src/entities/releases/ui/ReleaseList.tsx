@@ -43,7 +43,7 @@ export function ReleaseList() {
             {regularReleases.length > 0 && (
                 <Box id="releases" mb="xl" style={{ scrollMarginTop: '100px' }}>
                     <Title order={2} mb="md" className={classes.sectionTitle}>Releases</Title>
-                    <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="xl" verticalSpacing="xl">
+                    <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="xl" verticalSpacing="xl">
                         {regularReleases.map((release) => (
                             <ReleaseCard key={release.id} release={release} />
                         ))}
@@ -54,7 +54,7 @@ export function ReleaseList() {
             {mixes.length > 0 && (
                 <Box id="mixes" mt="xl" style={{ scrollMarginTop: '100px' }}>
                     <Title order={2} mb="md" className={classes.sectionTitle}>Mixes</Title>
-                    <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="xl" verticalSpacing="xl">
+                    <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="xl" verticalSpacing="xl">
                         {mixes.map((release) => (
                             <ReleaseCard key={release.id} release={release} />
                         ))}

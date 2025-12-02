@@ -4,9 +4,8 @@ import { FC, useContext } from 'react';
 import { Group } from '@mantine/core';
 import Link from 'next/link';
 import classes from './Footer.module.css';
-import { IconMenu2, IconPlus } from '@tabler/icons-react';
+import { IconMenu2, IconHome } from '@tabler/icons-react';
 import { usePathname } from 'next/navigation';
-import { PlayButton } from './PlayButton';
 import MobileMenuModal from './MobileMenuModal';
 import { ResoucereLoaderContext } from './ResourceLoader';
 
@@ -18,15 +17,15 @@ export const Footer: FC = () => {
   return (
     <footer className={classes.footer}>
       <Group align="center" justify={"space-around"} h="100%" gap={0}>
-        {isOnRootPage ? (
+
+        {!isOnRootPage && (
           <div className={classes.playButtonWrapper}>
-            <PlayButton />
+            <Link href="/" className={classes.link}>
+              <IconHome size={36} color="white" />
+            </Link>
           </div>
-        ) : (
-          <Link href="/" className={classes.link}>
-            <IconPlus size={36} color="white" />
-          </Link>
         )}
+
         <div className={classes.menu}>
           <div className={classes.menuLink}>
             <IconMenu2 size={24} color="black" onClick={() => setModalOpen(true)} />
