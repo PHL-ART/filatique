@@ -13,7 +13,7 @@ services:
       PORT: 3000
       DATABASE_URL: ${DATABASE_URL}
     ports:
-      - "3000:3000"
+      - "3001:3000"
     healthcheck:
       test:
         [
@@ -28,10 +28,13 @@ services:
       - ph1l74-network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.filatique.rule=Host(`filatqiue.ru`) || Host(`www.filatqiue.ru`)"
+      - "traefik.docker.network=ph1l74-network"
+      - "traefik.http.routers.filatique.rule=Host(`filatique.ru`) || Host(`www.filatique.ru`)"
       - "traefik.http.routers.filatique.entrypoints=web"
-      - "traefik.http.routers.filatique-secure.rule=Host(`filatqiue.ru`) || Host(`www.filatqiue.ru`)"
+      - "traefik.http.routers.filatique.service=filatique"
+      - "traefik.http.routers.filatique-secure.rule=Host(`filatique.ru`) || Host(`www.filatique.ru`)"
       - "traefik.http.routers.filatique-secure.entrypoints=websecure"
+      - "traefik.http.routers.filatique-secure.service=filatique"
       - "traefik.http.routers.filatique-secure.tls=true"
       - "traefik.http.routers.filatique-secure.tls.certresolver=letsencrypt"
       - "traefik.http.middlewares.filatique-redirect.redirectscheme.scheme=https"

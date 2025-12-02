@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@shared/lib/prisma';
 
-const prisma = new PrismaClient();
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function GET() {
     try {
@@ -11,14 +12,16 @@ export async function GET() {
             },
         });
 
-        return NextResponse.json(indexes);
+        return NextResponse.json(indexes, {
+            headers: {
+                'Cache-Control': 'no-store, must-revalidate',
+            },
+        });
     } catch (error) {
         console.error('Ошибка при получении прессы:', error);
         return NextResponse.json(
             { error: 'Ошибка при получении прессы' },
             { status: 500 }
         );
-    } finally {
-        await prisma.$disconnect();
     }
 }
