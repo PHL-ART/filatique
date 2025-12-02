@@ -1,0 +1,75 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.contactsPlaceholder {
+    min-height: 200px;
+    width: 100%;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.contactsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.contactLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    text-decoration: none;
+    color: white;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    min-width: 220px;
+    justify-content: center;
+}
+
+.contactLink:hover,
+.contactLink:focus-visible {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.contactIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactName {
+    font-weight: 600;
+}
+
+@media screen and (max-width: 576px) {
+    .contactLink {
+        min-width: unset;
+        width: 100%;
+    }
+}
+
