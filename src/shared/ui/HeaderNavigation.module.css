@@ -7,14 +7,6 @@
     font-size: 2.5rem;
     font-weight: 700;
     font-family: 'JostExtraBold', sans-serif;
-    letter-spacing: 0.12em;
-
-    @media screen and (max-width: 576px) {
-        gap: 0.5rem;
-        flex-wrap: wrap;
-        margin-top: 0rem;
-        font-size: 1.875rem;
-    }
 }
 
 .navigationLink {
@@ -26,15 +18,27 @@
     font-family: inherit;
 }
 
-.navigationDivider {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: inherit;
-    font-weight: inherit;
-}
-
 .navigationLink:hover {
     color: white;
     text-decoration: none;
     text-shadow: 0px 0px 2.5rem rgba(255, 255, 255, 0.5);
+}
+
+.navigationDivider {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: inherit;
+    font-weight: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 576px) {
+    .navigationLinks {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: 0;
+        font-size: 1.5rem;
+    }
 }
 

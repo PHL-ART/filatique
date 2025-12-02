@@ -1,33 +1,17 @@
 import { Header } from "@shared/ui/Header";
 import { ReleaseList } from "@entities/releases/ui/ReleaseList";
-import { Anchor, Box } from "@mantine/core";
-import classes from "./page.module.css";
+import { HeaderNavigation } from "@shared/ui/HeaderNavigation";
 
 export default function Listen() {
-  const linkFont = "'JostExtraBold', sans-serif";
+  const navigationItems = [
+    { href: "#releases", label: "Releases" },
+    { href: "#mixes", label: "Mixes" },
+  ];
 
   return (
     <>
       <Header>
-        <Box className={classes.navigationLinks}>
-          <Anchor
-            href="#releases"
-            className={classes.navigationLink}
-            style={{ fontFamily: linkFont }}
-          >
-            Releases
-          </Anchor>
-          <span className={classes.navigationDivider} aria-hidden="true">
-            &middot;
-          </span>
-          <Anchor
-            href="#mixes"
-            className={classes.navigationLink}
-            style={{ fontFamily: linkFont }}
-          >
-            Mixes
-          </Anchor>
-        </Box>
+        <HeaderNavigation items={navigationItems} />
       </Header>
       <ReleaseList />
     </>

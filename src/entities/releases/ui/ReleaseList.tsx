@@ -41,7 +41,11 @@ export function ReleaseList() {
     return (
         <Container fluid className={classes.container}>
             {regularReleases.length > 0 && (
-                <Box id="releases" mb="xl" style={{ scrollMarginTop: '100px' }}>
+                <Box
+                    id="releases"
+                    mb="xl"
+                    style={{ scrollMarginTop: '100px', paddingInline: '0.25rem' }}
+                >
                     <Title order={2} mb="md" className={classes.sectionTitle}>Releases</Title>
                     <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="xl" verticalSpacing="xl">
                         {regularReleases.map((release) => (

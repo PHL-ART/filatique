@@ -49,11 +49,7 @@
     font-weight: 800;
     font-family: 'JostExtraBold', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
 
-    /* @media screen and (max-width: 768px) {
-        padding: 0;
-    } */
 }
 
 @media (max-width: $mantine-breakpoint-sm) {

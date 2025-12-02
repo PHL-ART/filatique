@@ -3,16 +3,43 @@
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* .modalContent {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    max-width: 900px;
-    width: 100%;
-} */
+.modalContent {
+    background-color: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.65);
+    --modal-size: min(900px, calc(100vw - 2rem));
+    width: min(900px, calc(100vw - 2rem));
+    max-height: calc(100vh - 2rem);
+}
 
 .modalBody {
     padding: 0;
+    position: relative;
+}
+
+.modalCloseButton {
+    position: absolute;
+    top: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    z-index: 2;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.35);
+    border-radius: 999px;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalCloseButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.modalCloseButton.mantine-active:active {
+    transform: translateX(-50%);
 }
 
 .modalContainer {
@@ -57,6 +84,8 @@
 .modalDescription {
     margin-bottom: 0.5rem;
     line-height: 1.6;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .modalDate {
@@ -115,9 +144,20 @@
 
 /* Адаптивность для мобильных устройств */
 @media (max-width: 576px) {
+    .modalContent {
+        --modal-size: calc(100vw - 0.75rem);
+        width: calc(100vw - 0.75rem);
+        max-height: calc(100vh - 1.5rem);
+        border-radius: 1rem;
+    }
+
     .modalContainer {
         flex-direction: column;
         text-align: center;
+    }
+    .modalBody {
+        max-height: calc(100vh - 2rem);
+        overflow-y: auto;
     }
 
     .modalInfoColumn,
