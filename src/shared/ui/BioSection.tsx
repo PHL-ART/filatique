@@ -42,7 +42,7 @@ export const BioSection = () => {
       <div className={classes.bioContent}>
         <div className={classes.portraitWrapper}>
           <Image
-            src="/assets/images/releases/filatique.jpg"
+            src="/assets/images/filatique.jpg"
             alt="Filatique portrait"
             fill
             className={classes.portraitImage}
